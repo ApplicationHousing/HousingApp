@@ -1,14 +1,14 @@
 package android.dkh.com.housingapp;
 
 public class Product {
-    private String title;
+    public String title;
     private String address;
-    private int price;
+    public int price;
     private String propertyType;
     private int bedroom;
     private int bathroom;
     private int usableArea;
-    private int image;
+    public int image;
     private android.dkh.com.housingapp.Location location;
 
 

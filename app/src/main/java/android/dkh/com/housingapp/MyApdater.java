@@ -7,50 +7,58 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by MyPC on 06/04/2018.
  */
 
-public class MyApdater extends ArrayAdapter<String> {
-    String [] image;
-    int [] image_name;
-    Context context;
 
-    public MyApdater(@NonNull Context context, String [] imageHouse, int[] image_nameHouse) {
-        super(context, R.layout.listview_item);
-        this.image = imageHouse;
-        this.image_name = image_nameHouse;
-        this.context = context;
-    }
+
+public class MyApdater extends BaseAdapter {
+
+    Context context;
+    int layout;
+    List<Product> products;
+
+    public MyApdater(Context context, int layout, List<Product> products) {
+            this.context = context;
+            this.layout = layout;
+            this.products = products;
+            }
 
     @Override
     public int getCount() {
-        return image.length;
-    }
+            return products.size();
+            }
 
-    @NonNull
     @Override
-    public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
-        ViewHolder viewHolder = new ViewHolder();
-        if (convertView == null){
-        LayoutInflater layoutInflater = (LayoutInflater) context.getSystemService
-                (Context.LAYOUT_INFLATER_SERVICE);
-        convertView = layoutInflater.inflate(R.layout.listview_item, parent, false);
-        viewHolder.Image = (ImageView) convertView.findViewById(R.id.image);
-        viewHolder.ImageName = (TextView) convertView.findViewById(R.id.image_name);
-        convertView.setTag(viewHolder);
-        }else {
-            viewHolder = (ViewHolder) convertView.getTag();
-        }
-        viewHolder.Image.setImageResource(image_name[position]);
-        viewHolder.ImageName.setText(image[position]);
-        return convertView;
-    }
-    static class ViewHolder{
-        ImageView Image;
-        TextView ImageName;
-    }
+    public Object getItem(int i) {
+            return null;
+            }
+
+    @Override
+    public long getItemId(int i) {
+            return 0;
+            }
+
+    @Override
+    public View getView(int i, View view, ViewGroup viewGroup) {
+        LayoutInflater layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+
+        view = layoutInflater.inflate(layout,null);
+        TextView txtName = view.findViewById(R.id.image_name);
+        txtName.setText(products.get(i).title);
+        TextView txtPrice = view.findViewById(R.id.image_price);
+        txtPrice.setText(products.get(i).price +"");
+        ImageView image = view.findViewById(R.id.image);
+        image.setImageResource(products.get(i).image);
+
+        return view;
+            }
 }

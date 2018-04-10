@@ -28,14 +28,13 @@ public class MainActivity extends AppCompatActivity {
     public void init(){
         //toolbar = (Toolbar) findViewById(R.id.toolbar);
         listView = (ListView) findViewById(R.id.lisview);
-        MyApdater myApdater = new MyApdater(MainActivity.this, image_name, image);
+        myApdater = new MyApdater(MainActivity.this, R.layout.listview_item, products);
         listView.setAdapter(myApdater);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Intent intent = new Intent(MainActivity.this, DetailActivity.class);
-                intent.putExtra("Image", image[i]);
-                intent.putExtra("ImageName", image_name[i]);
+                intent.putExtra("Products", products);
                 startActivity(intent);
             }
         });
@@ -46,6 +45,6 @@ public class MainActivity extends AppCompatActivity {
         products.add(new Product("Modern 3 bedroom apartment with panoramic river view in Binh Thanh District",
                 "Binh Thanh District", 1000, PropertyType.APARTMENT.toString(), 2, 3, 50, R.drawable.ic_1,new android.dkh.com.housingapp.Location(10.2167, 132.6768)));
 
-        //thêm 5 6 thuộc tính nữa
+
     }
 }

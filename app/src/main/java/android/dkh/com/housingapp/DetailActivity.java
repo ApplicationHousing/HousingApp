@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+
 public class DetailActivity extends AppCompatActivity {
     private ImageView imageView;
     private TextView textView;
@@ -16,7 +18,7 @@ public class DetailActivity extends AppCompatActivity {
 
         Bundle bundle = getIntent().getExtras();
         if ((bundle != null)) {
-            imageView.setImageResource(bundle.getInt("Image"));
+            imageView.setImageResource( bundle.getInt("Image"));
         }
     }
     public void init(){
