@@ -1,31 +1,28 @@
 package android.dkh.com.housingapp;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
+import android.location.Location;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.Toolbar;
+
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
     ListView listView;
+    ArrayList<Product> products = new ArrayList<>();
+    MyApdater myApdater;
     //Toolbar toolbar;
 
-    String[] image_name = {"Biệt thự Phú Mỹ Hưng","Căn hộ cao cấp River",
-                    "Căn hộ cao cấp Thạnh Mỹ Lợi",
-                    "Nhà nguyên căn chung cư Thanh Đa",
-                    "Nhà nguyên căn chung cư Ngô Tất Tố"};
-    int [] image = {R.drawable.ic_1,
-                        R.drawable.ic_2,
-                        R.drawable.ic_3,
-                        R.drawable.ic_5,
-                        R.drawable.ic_6};
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         init();
+        add();
     }
 
     public void init(){
@@ -42,5 +39,13 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+    }
+
+    //hàm add tự động
+    public void add(){
+        products.add(new Product("Modern 3 bedroom apartment with panoramic river view in Binh Thanh District",
+                "Binh Thanh District", 1000, PropertyType.APARTMENT.toString(), 2, 3, 50, R.drawable.ic_1,new android.dkh.com.housingapp.Location(10.2167, 132.6768)));
+
+        //thêm 5 6 thuộc tính nữa
     }
 }
