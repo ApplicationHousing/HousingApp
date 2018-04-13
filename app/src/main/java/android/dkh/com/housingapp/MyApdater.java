@@ -1,17 +1,15 @@
 package android.dkh.com.housingapp;
 
 import android.content.Context;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -59,6 +57,9 @@ public class MyApdater extends BaseAdapter {
         ImageView image = view.findViewById(R.id.image);
         image.setImageResource(products.get(i).image);
 
+
+        Animation animation = AnimationUtils.loadAnimation(context, R.anim.scale_line);
+        view.startAnimation(animation);
         return view;
-            }
+    }
 }
